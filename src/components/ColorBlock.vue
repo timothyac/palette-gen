@@ -1,6 +1,6 @@
 <template>
   <div :style="{'background-color':colorCode}">
-    <h1 @click="saveToLocalStorage">{{ colorCode }}</h1>
+    <h1 @click="checkLocalStorage">{{ colorCode }}</h1>
   </div>
 </template>
 
@@ -9,23 +9,34 @@ export default {
   name: "ColorBlock",
   props: ["colorBlockId"],
   methods: {
-    saveToLocalStorage() {
-      console.log(this.colorBlockId);
-      localStorage.setItem(
-        `position ${this.colorBlockId}`,
-        JSON.stringify(this.colorCode)
+    checkLocalStorage() {
+      // check local storage to determine whether to delete or add
+      let localStorageCheck = JSON.parse(
+        localStorage.getItem(`position ${this.colorBlockId}`)
       );
+
+      // if  true, it will delete previous storage, if not it will add
+      if (localStorageCheck && localStorageCheck != "") {
+        localStorage.removeItem(`position ${this.colorBlockId}`);
+      } else {
+        localStorage.setItem(
+          `position ${this.colorBlockId}`,
+          JSON.stringify(this.colorCode)
+        );
+      }
+
+      return;
     }
   },
   data() {
     let colorCode = "";
 
-    // check local storage for locked code
+    // check local storage to see if anything is in there on load
     let localStorageCheck = JSON.parse(
       localStorage.getItem(`position ${this.colorBlockId}`)
     );
 
-    if (localStorageCheck) {
+    if (localStorageCheck && localStorageCheck != "") {
       // assign color code if there is one based on position
       colorCode = localStorageCheck;
       console.log(localStorageCheck);
