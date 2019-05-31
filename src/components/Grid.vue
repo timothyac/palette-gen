@@ -1,9 +1,9 @@
 <template>
   <div class="grid-template">
-    <ColorBlock/>
-    <ColorBlock/>
-    <ColorBlock/>
-    <ColorBlock/>
+    <ColorBlock v-bind:colorBlockId="1"/>
+    <ColorBlock v-bind:colorBlockId="2"/>
+    <ColorBlock v-bind:colorBlockId="3"/>
+    <ColorBlock v-bind:colorBlockId="4"/>
   </div>
 </template>
 
