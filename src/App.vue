@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Header/>
     <Grid/>
     <Footer/>
   </div>
@@ -7,13 +8,15 @@
 
 <script>
 import Grid from "./components/Grid.vue";
+import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 
 export default {
   name: "app",
   components: {
     Grid,
-    Footer
+    Footer,
+    Header
   }
 };
 </script>
@@ -25,7 +28,7 @@ export default {
   padding: 0;
 }
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Helvetica, sans-serif;
   line-height: 1.4;
 }
 </style>

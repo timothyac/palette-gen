@@ -24,7 +24,7 @@ export default {
   background: #555;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  height: 95vh;
+  height: 90vh;
 }
 
 @media (max-width: 800px) {
