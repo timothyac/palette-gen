@@ -1,10 +1,15 @@
 <template>
   <div :style="{'background-color':colorCode}">
-    <h1 @click="checkLocalStorage" v-bind:class="[isLocked?'locked':'unlocked']">{{ colorCode }}</h1>
+    <h1
+      @click="checkLocalStorage"
+      v-bind:class="[isLocked?'locked':'unlocked']"
+      v-bind:style="[checkColor.isDark() ? {'color': '#fff'} : {'color': '#000'}]"
+    >{{ colorCode }}</h1>
   </div>
 </template>
 
 <script>
+import Color from "color";
 export default {
   name: "ColorBlock",
   props: ["colorBlockId"],
@@ -53,7 +58,10 @@ export default {
           .substring(3, 9);
       isLocked = false;
     }
-    return { colorCode, isLocked };
+
+    let checkColor = Color(colorCode);
+
+    return { colorCode, isLocked, checkColor };
   }
 };
 </script>
@@ -63,20 +71,18 @@ div {
   position: relative;
   height: 100%;
 }
-
-h1.unlocked {
+h1 {
   position: absolute;
   top: 50%;
   left: 35%;
   width: auto;
-  color: whitesmoke;
+}
+
+h1.unlocked {
+  text-decoration: none;
 }
 
 h1.locked {
-  position: absolute;
-  top: 50%;
-  left: 35%;
-  width: auto;
-  color: black;
+  text-decoration: underline;
 }
 </style>
