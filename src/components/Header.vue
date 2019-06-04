@@ -19,4 +19,11 @@ export default {
   color: azure;
   text-align: center;
 }
+
+@media (max-width: 500px) {
+  .header {
+    padding: 0.5rem 0;
+    height: 10vh;
+  }
+}
 </style>

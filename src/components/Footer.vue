@@ -23,4 +23,10 @@ export default {
   color: azure;
   text-align: center;
 }
+
+@media (max-width: 500px) {
+  .footer {
+    padding: 0.5rem 0;
+  }
+}
 </style>
